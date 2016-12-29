@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row">
+<div class="page-header">
+	<h1>{{ user.name }} <small>@{{ user.username }}</small></h1>
+	{% if current_user.id!=user.id %}
+	{% if following %}
+		<a href="{{ url_for('unfollow', id=user.id) }}"><button class="btn btn-danger">Unfollow</button></a>
+	{% else %}
+	<a href="{{ url_for('follow', id=user.id) }}"><button class="btn btn-primary">Follow</button></a>
+	{% endif %}
+	{% endif %}
+	</div>
+	</div>
+
+
+{% if twits %}
+{% for twit in twits %}
+<div class="media">
+  <div class="media-left">
+    <a href="#">
+      <img class="media-object" src="..." alt="...">
+    </a>
+  </div>
+  </div>
+  <div class="media-body">
+    <h4 class="media-heading">{{ twit.user.name }}
+    <small>@{{ twit.user.username }}</small></h4>
+    {{twit.content}}
+  </div>
+{% endfor %}
+{% else %}
+	<div class="alert alert-warning" role="alert">No Twits!</div>
+{% endif %}
+
+{% endblock %}

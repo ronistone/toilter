@@ -1,0 +1,14 @@
+{%extends 'base.html'%}
+{%block content%}
+  <head>
+    {%block title%} {{super()}} - Home {%endblock%}
+  <link rel="stylesheet" href="{{url_for('static', filename="css/bootstrap.min.css")}}">
+</head>
+  <body>
+  <h1>Toilter</h1>
+  <p>Bem vindo ao Toilter</p>
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="{{url_for('static', filename="js/bootstrap.min.js")}}"></script>
+</body>
+{%endblock%}

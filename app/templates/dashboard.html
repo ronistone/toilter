@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form method="POST">
+  {{ form.csrf_token }}
+  <div class="form-group">
+    {{ form.content(class="form-control",placeholder="Your twit..")}}
+      {% if form.errors.content %}
+      <div class="alert alert-danger" role="alert">
+        <ul>
+        {% for e in form.errors.content %}
+          <li>{{ e }}</li>
+        {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+    </div>
+    <button type="submit" class="btn btn-primary">Send</button>
+  </form>
+
+{% if twits %}
+{% for twit in twits %}
+<div class="media">
+  <div class="media-left">
+    <a href="#">
+      <img class="media-object" src="..." alt="...">
+    </a>
+  </div>
+  </div>
+  <div class="media-body">
+    <h4 class="media-heading">{{ twit.user.name }}
+    <small>@{{ twit.user.username }}</small></h4>
+    {{twit.content}}
+  </div>
+{% endfor %}
+{% else %}
+	<div class="alert alert-warning" role="alert">No Twits!</div>
+{% endif %}
+
+{% endblock %}

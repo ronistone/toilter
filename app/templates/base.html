@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <title>{%block title%} Toilter {%endblock%}</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="O Toilter de Todos">
+    <meta name="author" content="Ronistone">
+    <link rel="icon" href="{{url_for('static', filename='image/favico.ico')}}">
+
+    <title>Toilter</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{url_for('static',filename='css/bootstrap.min.css')}}" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="container">
+      <div class="header clearfix">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            {% if current_user.is_authenticated %}
+            <li role="presentation" class="active"><a href="/dashboard"">Home</a></li>
+            {% else %}
+            <li role="presentation" class="active"><a href="/"">Home</a></li>
+            {% endif %}
+            <li role="presentation"><a href="#">About</a></li>
+            <li role="presentation"><a href="#">Contact</a></li>
+            {% if current_user.is_authenticated: %}
+              <li role="presentation"><a href={{url_for('logout')}}>Logout</a></li>
+            {% else %}
+            <li role="presentation"><a href={{url_for('login')}}>Login</a></li>
+            <li role="presentation"><a href={{url_for('register')}}>Register</a></li>
+            {% endif %}
+          </ul>
+        </nav>
+        <h3 class="text-muted">Toilter</h3>
+      </div>
+
+      {%block content%}
+
+      {%endblock%}
+     </div>
+
+     <p>---------------------------------------------------------------------</p>
+     <b>Twilter</b>
+
+    <script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+  </body>
+</html>

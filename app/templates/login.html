@@ -1,0 +1,50 @@
+{%extends 'base.html'%}
+{%block content%}
+  <div class="col-md-4 col-md-offset-4">
+    <p>Login</p>
+  <form action="" method="POST">
+    {{form.csrf_token}}
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+      <div class="alert alert-warning" role="alert">
+        <ul class=flashes>
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+    {% endwith %}
+    <div class="form-group">
+      <label>Username</label>
+        {{form.username(class="form-control",placeholder="Username")}}
+        {%if form.errors.username%}
+        <div class="alert alert-danger" role="alert">
+          <ul>
+          {%for e in form.errors.username%}
+            <li> {{e}} </li>
+          {%endfor%}
+        </ul>
+        </div>
+        {%endif%}
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        {{form.password(class="form-control")}}
+        {%if form.errors.password%}
+        <div class="alert alert-danger" role="alert">
+          <ul>
+          {%for e in form.errors.password%}
+            <li> {{e}} </li>
+          {%endfor%}
+        </ul>
+        </div>
+        {%endif%}
+      </div>
+      <div class="checkbox">
+        {{form.remember_me}}<label> Remember me</label>
+      </div>
+      <button type="submit" class="btn btn-default">Entrar</button>
+</form>
+</div>
+{%endblock%}
