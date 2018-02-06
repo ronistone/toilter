@@ -40,7 +40,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/home/agentex/Documents/Algar/Teste/venv"
+VIRTUAL_ENV="/home/rgrj/Documents/Algar/testes/toilter/venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
